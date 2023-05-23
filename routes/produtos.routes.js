@@ -3,6 +3,6 @@ import { catalogo } from "../controllers/produtos.controller.js"
 
 const produtosRouter = Router()
 
-produtosRouter.post("/produto", catalogo)
+produtosRouter.get("/", catalogo)
 
 export default produtosRouter

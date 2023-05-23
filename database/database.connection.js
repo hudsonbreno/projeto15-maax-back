@@ -1,13 +1,13 @@
-import { MongoClient } from "mongodb"
+import pg from "pg"
 import dotenv from "dotenv"
 
-dotenv.config()
+dotenv.config() ;
 
-const mongoClient = new MongoClient(process.env.DATABASE_URL)
-try{
-    await mongoClient.connect();
+const { Pool } = pg;
+
+console.log(process.env.DATABASE_URL)
+const configDatabase = {
+    connectionString: process.env.DATABASE_URL,
 }
-catch(err){
-    console.log(err.message)
-}
-export const db = mongoClient.db()
+
+export const db = new Pool(configDatabase);
